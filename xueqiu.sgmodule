@@ -1,0 +1,25 @@
+#!name=Xueqiu AdBlock
+
+[URL Rewrite]
+^https?:\/\/xqimg\.imedao\.com\/[a-z0-9]{24}\.jpg$ - reject-200
+^https?:\/\/api\.xueqiu\.com\/statuses\/livenews\/mark\/list\.json\? - reject
+^https?:\/\/api\.xueqiu\.com\/snowflake-theme\/query\/v1\/hot_event\/rich_tag_new\.json\? - reject
+^https?:\/\/api\.xueqiu\.com\/recommend-proxy\/card\/zj_card\.json\? - reject
+^https?:\/\/api\.xueqiu\.com\/analysis\/build_union\/dialog\/show\.json\? - reject
+^https?:\/\/api\.xueqiu\.com\/snowpard\/launch_strategy\/query\.json\? - reject
+^https?:\/\/fund\.xueqiu\.com\/fundx - reject
+^https?:\/\/api\.xueqiu\.com\/ucprofile\/api\/user\/batch_get_profile_image\.json - reject
+^https?:\/\/api\.xueqiu\.com\/recommend-proxy\/card\/zj_card\.json - reject
+^https?:\/\/open\.xueqiu\.com\/mpaas\/rn\/releases\/v2\/match_bundles - reject
+^https?:\/\/api\.xueqiu\.com\/ucprofile\/api\/user\/batchGetUserBasicInfo.json - reject
+^https?:\/\/api\.xueqiu\.com\/lightsnow\/launch\/plan\/bee\/query.json - reject
+^https?:\/\/api\.xueqiu\.com\/ucprofile\/api\/user\/batch_get_profile_image\.json - reject
+
+
+[Script]
+xueqiu = type=http-response, pattern=^https?:\/\/api\.xueqiu\.com\/analysis\/home\/my_tab\.json, requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/WesleyRhodes/Script/main/js/xueqiu.js
+xueqiu1 = type=http-response, pattern=^https?:\/\/open\.xueqiu\.com\/mpaas\/config\/content\?appkey=.*&keys=timeline_tab_name, requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/WesleyRhodes/Script/main/js/xueqiu.js
+
+[MITM]
+hostname = %APPEND% *.xueqiu.com, xqimg.imedao.com, 101.201.62.20, 101.201.62.22, 101.201.175.228, 182.92.251.113
+
